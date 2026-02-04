@@ -1,5 +1,7 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react"
+import { login } from "@/lib/auth";
 
 export default function Page(){
 
@@ -11,9 +13,15 @@ export default function Page(){
             <h1 className="text-xl font-bold text-center">Login</h1>
             <div className="border rounded-lg p-10 mt-5">
                 <form className="space-y-3"
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                     e.preventDefault();
-                    console.log({email, password});
+                    
+                    try{
+                        const data = await login(email, password);
+                        console.log("Server response:", data);
+                    } catch (err) {
+                        console.error("Login error:", err);
+                    }
                 }}>
                     <div>
                         <label>Email</label>
@@ -35,7 +43,7 @@ export default function Page(){
                         </button>
                     </div>
                 </form>
-            <p className="font-serif text-center pt-5">Нет аккаунта? Ну пох :) <a className="underline" href="/register">Register</a></p>
+            <p className="font-semibold text-center pt-5">Нет аккаунта? Ну пох :) <Link className="underline" href="/register">Register</Link></p>
             </div>
         </div>
     )
