@@ -24,10 +24,27 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body>
+        <div className={`${geistMono.className} flex flex-col h-screen justify-between`}>
+        
+          <header className="flex p-5 border m-4 rounded-xl justify-between">
+            <div>
+              <h1 className="text-xl font-bold text-center">
+                <a href="/">Уроки по Next.js</a>
+              </h1>
+            </div>
+            <div>
+              <a href="/login">
+                <h1 className="text-xl font-bold text-right">Sign In</h1>
+              </a>
+            </div>
+          </header>
+
+          <main className="flex-auto">{children}</main>
+
+          <footer className="text-xl p-5 text-center font-bold bg-neutral-primary-soft rounded-xl shadow-xs border border-default m-4 ">whoisbubble - 2026</footer>
+
+        </div>
       </body>
     </html>
   );
