@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,23 +29,12 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className={`${geistMono.className} flex flex-col h-screen justify-between`}>
-        
-          <header className="flex p-5 border m-4 rounded-xl justify-between">
-            <div>
-              <h1 className="text-xl font-bold text-center">
-                <a href="/">Уроки по Next.js</a>
-              </h1>
-            </div>
-            <div>
-              <a href="/login">
-                <h1 className="text-xl font-bold text-right">Sign In</h1>
-              </a>
-            </div>
-          </header>
+
+          <Header/>
 
           <main className="flex-auto">{children}</main>
 
-          <footer className="text-xl p-5 text-center font-bold bg-neutral-primary-soft rounded-xl shadow-xs border border-default m-4 ">whoisbubble - 2026</footer>
+          <Footer/>
 
         </div>
       </body>
